@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/dahao"
+    android:paddingRight="@dimen/dahao"
+    android:orientation="vertical">
+<!--    sorting-->
+    <LinearLayout
+        android:layout_marginTop="@dimen/dahao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/xiaodahao"
+            android:text="Sort:"
+            android:textSize="16sp"
+            android:textColor="@color/colorBlack"
+            android:gravity="center_vertical"
+            />
+
+        <Button
+            android:id="@+id/mm_releasedate"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/xiaodahao"
+            android:text="release date"
+            android:drawableRight="@drawable/up_down"
+            android:drawablePadding="@dimen/big"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            android:textColor="@color/colorBlack"
+            android:background="@drawable/mm_button"
+            android:layout_marginLeft="@dimen/xiaodahao"
+            />
+        <Button
+            android:id="@+id/mm_watchdate"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/xiaodahao"
+            android:text="watch date"
+            android:drawablePadding="@dimen/big"
+            android:drawableRight="@drawable/up_down"
+            android:gravity="center_vertical"
+            android:textSize="12sp"
+            android:textColor="@color/colorBlack"
+            android:background="@drawable/mm_button"
+            android:layout_marginLeft="@dimen/xiaodahao"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/little"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_marginLeft="55dp"
+        >
+    <Button
+        android:id="@+id/mm_userscore"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/xiaodahao"
+        android:text="user score"
+        android:drawablePadding="@dimen/big"
+        android:drawableRight="@drawable/up_down"
+        android:gravity="center_vertical"
+        android:textSize="12sp"
+        android:textColor="@color/colorBlack"
+        android:background="@drawable/mm_button"
+        android:layout_marginLeft="15dp"
+        />
+    <Button
+        android:id="@+id/mm_publicscore"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/xiaodahao"
+        android:text="public score"
+        android:drawablePadding="@dimen/big"
+        android:drawableRight="@drawable/up_down"
+        android:gravity="center_vertical"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:background="@drawable/mm_button"
+        android:layout_marginLeft="40dp"
+        />
+    </LinearLayout>
+<!--     select-->
+    <LinearLayout
+        android:layout_marginTop="@dimen/little"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/xiaodahao"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Select:"
+            android:textSize="16sp"
+            android:textColor="@color/colorBlack"
+            android:gravity="center_vertical" />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/mm_button"
+            android:layout_marginLeft="@dimen/more">
+            <Spinner
+                android:id="@+id/mm_genre"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:entries="@array/gener"
+                />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+    <ListView
+        android:layout_marginTop="@dimen/dahao"
+        android:id="@+id/mm_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:listSelector="@drawable/list_item"
+        android:divider="@color/colorWhite"
+        android:dividerHeight="@dimen/dahao"
+        />
+
+
+
+
+
+</LinearLayout>

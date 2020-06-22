@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:orientation="horizontal"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_watch_list_item"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/wla_moviename"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:text="星球大战"
+                android:textSize="18sp"
+                android:textColor="@color/colorBlack"/>
+            <TextView
+                android:id="@+id/wla_release"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:text="2019-10-21"
+                android:textSize="14sp"
+                android:textColor="@color/colorpress"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/wla_addtime"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:text="2020-5-21 10:32:12"
+            android:textSize="14sp"
+            android:textColor="@color/colorpress"
+            android:paddingTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="40"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <Button
+                android:id="@+id/wla_delete"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/delete"
+                android:layout_gravity="center"
+                />
+            <Button
+                android:id="@+id/wla_detail"
+                android:layout_marginLeft="20dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/detial"
+                android:layout_gravity="center"
+                />
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

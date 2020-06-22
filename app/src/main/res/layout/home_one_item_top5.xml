@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingRight="@dimen/dahao"
+    android:paddingLeft="@dimen/dahao"
+    android:paddingTop="@dimen/big"
+    android:paddingBottom="@dimen/big"
+
+    >
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="80"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/big"
+        >
+        <TextView
+            android:id="@+id/moviename"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Movie name"
+            android:textSize="18sp"
+            android:textColor="#1A1A1A"/>
+        <TextView
+            android:id="@+id/releasetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2020-5-24"
+            android:textSize="16sp"
+            android:textColor="@color/colorGray"
+            android:layout_marginTop="@dimen/little"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_ratingsore"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
+        android:textSize="30sp"
+        style="@style/AppTheme.Ital"
+        android:textColor="@color/colorYellow"
+        android:gravity="center_vertical"/>
+
+
+
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="state">
+        <item>NSW</item>
+        <item>QLD</item>
+        <item>SA</item>
+        <item>TAS</item>
+        <item>VIC</item>
+        <item>WA</item>
+    </string-array>
+
+
+    <string-array name="gener">
+        <item>all</item>
+        <item>Comedy</item>
+        <item>Drama</item>
+        <item>Romance</item>
+        <item>Animation</item>
+        <item>Adventure</item>
+        <item>Sci-Fi</item>
+        <item>Thriller</item>
+        <item>Action</item>
+        <item>Biography</item>
+        <item>Crime</item>
+
+
+    </string-array>
+
+    <string-array name="cinema">
+        <item>Event Cinemas</item>
+        <item>Dumaresq Street Cinema</item>
+        <item>Digital Cinema</item>
+        <item>Moonlight</item>
+        <item>Ritz Cinema</item>
+
+    </string-array>
+</resources>

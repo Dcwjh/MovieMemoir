@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/dahao"
+    android:layout_marginLeft="@dimen/dahao"
+    android:layout_marginRight="@dimen/dahao"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="30">
+
+        <ImageView
+
+            android:id="@+id/aam_image"
+            android:layout_width="110dp"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:background="@color/colorselcet"
+            android:layout_marginTop="@dimen/big"
+            android:layout_marginBottom="@dimen/big"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/chaodahao"
+            android:layout_marginBottom="@dimen/xiaodahao"
+            android:layout_marginLeft="@dimen/dahao"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="strategic defense initiative"
+                android:textSize="18sp"
+                android:textColor="@color/colorBlack"
+                android:maxLines="2"
+                android:ellipsize="end"/>
+            <TextView
+                android:layout_marginLeft="@dimen/big"
+                android:layout_marginTop="@dimen/big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="release date : 2020-1-1"
+                android:textSize="15sp"
+                android:textColor="@color/colorselcet"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="70"
+        android:orientation="vertical">
+
+        <!--        release date time-->
+        <LinearLayout
+            android:layout_marginTop="@dimen/big"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="@dimen/big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date: "
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"
+                android:layout_gravity="center_vertical"
+                />
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/little"
+                android:hint="2020-06-01"
+                android:editable="false"
+                android:background="@drawable/date"
+                android:textColor="@color/colorselcet"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/xiaodahao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time: "
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"
+                android:layout_gravity="center_vertical"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/little"
+                android:textSize="16sp"
+                android:text="20:12:10"
+                android:textColor="@color/colorselcet"/>
+        </LinearLayout>
+        <!--        cinema-->
+        <LinearLayout
+            android:layout_marginTop="@dimen/big"
+            android:layout_marginLeft="@dimen/big"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Cinema:"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"/>
+            <RelativeLayout
+                android:layout_marginLeft="@dimen/little"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:background="@drawable/cinema"
+                >
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/big"
+                    android:entries="@array/cinema"
+                    />
+            </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="(Add)"
+                android:gravity="center_vertical"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="14sp"
+                />
+
+            <TextView
+                android:layout_marginLeft="@dimen/big"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Postcoe:"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"/>
+
+            <TextView
+                android:layout_marginLeft="@dimen/little"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="6001"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:gravity="center_vertical"/>
+
+        </LinearLayout>
+
+        <!--        rateing score-->
+        <LinearLayout
+            android:layout_marginTop="@dimen/big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Rating score:"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"/>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.RatingBar"
+                android:progressTint="@color/colorYellow"
+                />
+
+
+
+        </LinearLayout>
+        <!--        comment-->
+        
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Commet:"
+            android:textSize="18sp"
+            android:textColor="@color/colorBlack"
+            android:gravity="center_vertical"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="@dimen/little"
+            android:layout_marginBottom="@dimen/dahao"
+            android:background="@drawable/date"
+            android:gravity="top"
+            android:maxLines="100"
+            android:minLines="10" />
+
+        <Button
+            android:layout_marginTop="@dimen/big"
+            android:layout_marginLeft="@dimen/chaodahao"
+            android:layout_marginRight="@dimen/chaodahao"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Submit"
+            android:textSize="18sp"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/re_submit"
+            android:gravity="center"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

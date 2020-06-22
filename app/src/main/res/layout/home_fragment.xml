@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_marginTop="@dimen/big"
+                android:layout_marginLeft="60dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/movie"/>
+                <LinearLayout
+                    android:layout_marginLeft="@dimen/dahao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/home_userfirstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_marginTop="@dimen/big"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical" />
+                <TextView
+                    android:id="@+id/home_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:layout_marginTop="@dimen/little"
+                    android:textColor="#333333"
+                    android:gravity="center_vertical"/>
+                </LinearLayout>
+        </LinearLayout>
+<!--        android:textStyle="bold"-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dahao"
+            android:paddingTop="@dimen/little"
+            android:paddingBottom="@dimen/little"
+            android:textSize="20sp"
+            android:text="@string/top_5_of_movies"
+            android:textStyle= "italic"
+            android:textColor="#99001F"
+           />
+
+
+
+        <ListView
+            android:id="@+id/home_top5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:listSelector="@drawable/list_item"
+            android:divider="@color/colorpad"
+            android:dividerHeight="1dp"/>
+</LinearLayout>

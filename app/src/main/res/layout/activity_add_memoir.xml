@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dahao"
+        android:layout_marginLeft="@dimen/dahao"
+        android:layout_marginRight="@dimen/dahao">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            >
+
+            <ImageView
+                android:id="@+id/aam_image"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="@color/colorselcet"
+                android:layout_marginTop="@dimen/big"
+                android:layout_marginBottom="@dimen/big"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/chaodahao"
+                android:layout_marginBottom="@dimen/xiaodahao"
+                android:layout_marginLeft="@dimen/dahao"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/am_moviename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Life Is Beautiful"
+                    android:textSize="18sp"
+                    android:textColor="@color/colorBlack"
+                    android:maxLines="2"
+                    android:ellipsize="end"/>
+                <TextView
+                    android:id="@+id/am_releasedate"
+                    android:layout_marginLeft="@dimen/big"
+                    android:layout_marginTop="@dimen/big"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="release date : 1997-12-20"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorselcet"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:orientation="vertical">
+
+            <!--        release date time-->
+            <LinearLayout
+                android:layout_marginTop="@dimen/big"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_marginLeft="@dimen/big"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date: "
+                    android:textSize="16sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_gravity="center_vertical"
+                    />
+                <EditText
+                    android:id="@+id/am_watchdate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/little"
+                    android:hint="2020-06-01"
+                    android:editable="false"
+                    android:background="@drawable/date"
+                    android:textColor="@color/colorselcet"/>
+
+                <TextView
+                    android:layout_marginLeft="@dimen/xiaodahao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Time: "
+                    android:textSize="16sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_gravity="center_vertical"
+                    />
+                <EditText
+                    android:id="@+id/am_watchtime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/little"
+                    android:textSize="16sp"
+                    android:text="20:12:00"
+                    android:editable="false"
+                    android:textColor="@color/colorselcet"
+                    android:background="@drawable/date"/>
+            </LinearLayout>
+            <!--        cinema-->
+            <LinearLayout
+                android:layout_marginTop="@dimen/big"
+                android:layout_marginLeft="@dimen/big"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Cinema:"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorBlack"
+                    android:gravity="center_vertical"/>
+                <RelativeLayout
+                    android:layout_marginLeft="@dimen/little"
+                    android:layout_width="140dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/cinema"
+                    >
+
+                    <Spinner
+                        android:id="@+id/am_cinema"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        />
+<!--                    android:entries="@array/cinema"-->
+                </RelativeLayout>
+                <Button
+                    android:id="@+id/am_addcinema"
+                    android:layout_width="40dp"
+                    android:layout_height="20dp"
+                    android:text="(Add)"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="14sp"
+                    android:background="@color/colorWhite"
+                    />
+
+                <TextView
+
+                    android:layout_marginLeft="@dimen/big"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Postcoe:"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorBlack"
+                    android:gravity="center_vertical"/>
+
+                <TextView
+                    android:id="@+id/am_postcode"
+                    android:layout_marginLeft="@dimen/little"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="2321"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"/>
+
+            </LinearLayout>
+
+            <!--        rateing score-->
+            <LinearLayout
+                android:layout_marginTop="@dimen/big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Rating score:"
+                    android:textSize="16sp"
+                    android:textColor="@color/colorBlack"
+                    android:gravity="center_vertical"/>
+
+                <RatingBar
+                    android:id="@+id/am_ratingscore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/Widget.AppCompat.RatingBar"
+                    android:progressTint="@color/colorYellow"
+                    />
+
+
+
+            </LinearLayout>
+            <!--        comment-->
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:text="Commet:"
+                android:textSize="18sp"
+                android:textColor="@color/colorBlack"
+                android:gravity="center_vertical"/>
+
+            <EditText
+                android:id="@+id/am_comment"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="@dimen/little"
+                android:layout_marginBottom="@dimen/dahao"
+                android:background="@drawable/date"
+                android:gravity="top"
+                android:maxLines="100"
+                android:minLines="10" />
+            <Button
+                android:id="@+id/am_submit"
+                android:layout_marginLeft="@dimen/chaodahao"
+                android:layout_marginRight="@dimen/chaodahao"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Submit"
+                android:textSize="18sp"
+                android:textColor="@color/colorWhite"
+                android:background="@drawable/re_submit"
+                android:gravity="center"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

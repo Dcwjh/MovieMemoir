@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/mv_image"
+                android:layout_width="120dp"
+                android:layout_height="200dp"
+                android:scaleType="centerInside"
+                android:background="@drawable/image_shape"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/mv_moviename"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:text="strategic defense initiative"
+                    android:textSize="25sp"
+                    android:textColor="@color/colorBlack"
+                    android:layout_gravity="center_vertical"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginLeft="10dp"
+                    android:orientation="vertical">
+
+                    <!--       Director   -->
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Director:"
+                            android:layout_gravity="center_vertical"/>
+
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/mv_director"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:text="Wangjianhai"/>
+                    </LinearLayout>
+
+                    <!--      release date   -->
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Release:"
+                            android:layout_gravity="center_vertical"/>
+
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/mv_releasedate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:text="2020-1-1"/>
+                    </LinearLayout>
+
+                    <!--      genre   -->
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Genre:"
+                            android:layout_gravity="center_vertical"/>
+
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/mv_genre"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:text="Drama"/>
+                    </LinearLayout>
+
+                    <!--      Country   -->
+                    <LinearLayout
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Country:"
+                            android:layout_gravity="center_vertical"/>
+
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:id="@+id/mv_country"
+                            android:layout_width="wrap_content"
+                            android:layout_height="20dp"
+                            android:text="America"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    >
+
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="4"
+                       android:background="@drawable/cannotselect"
+                        android:paddingRight="@dimen/little">
+<!--                        android:background="@drawable/mv_button"-->
+
+
+                        <ImageView
+                            android:id="@+id/mv_list_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/want"
+                            android:layout_marginLeft="@dimen/little"
+                            android:layout_gravity="center_vertical"/>
+                        <Button
+                            android:id="@+id/mv_addtolist"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/cannotselect"
+                            android:text="List"
+                            android:textSize="16sp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginLeft="@dimen/more"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="4"
+                        android:background="@drawable/mv_button"
+                        android:paddingRight="@dimen/little">
+
+                        <ImageView
+                            android:id="@+id/mv_mem_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/addmemoir"
+                            android:layout_marginLeft="@dimen/little"
+                            android:layout_gravity="center_vertical"/>
+
+                        <Button
+                            android:id="@+id/mv_addtomem"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:text="Add"
+                            android:textSize="16sp"
+                            android:background="@drawable/mv_button"
+                            android:layout_gravity="center_vertical" />
+
+                </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@drawable/numbersore">
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score:"
+                android:textSize="25dp"
+                android:textColor="@color/colorYellow"
+                android:layout_gravity="center_vertical" />
+
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/mv_numberscore"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:text="95"
+                android:textSize="30sp"
+                android:textColor="@color/colorYellow"
+                android:textStyle="italic"
+                android:gravity="center_vertical"
+
+                />
+
+            <RatingBar
+                android:id="@+id/mv_ratingbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:progressTint="@color/colorYellow"
+                android:layout_marginLeft="30dp"
+                android:rating="5"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:background="@drawable/image_shape">
+            <TextView
+                android:id="@+id/actor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cast: "
+                android:textSize="18sp"
+                android:textColor="@color/colorBlack"
+                />
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/mv_cast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/actor"
+                android:text="Tim Robbins	...	Andy Dufresne \nBob Gunton	...	Warden Norton \nWilliam Sadler	...	Heywood \nClancy Brown	...	Captain Hadley \nGil Bellows	Gil Bellows	...	Tommy "
+                android:textSize="14sp"
+                />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:background="@drawable/image_shape">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Plot Summary:"
+                android:textSize="20sp"
+                android:textColor="@color/colorBlack"/>
+
+            <TextView
+                android:id="@+id/mv_plotsummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="One HBO showing included three extra scenes introduced by Morgan Freeman. One of the extra scenes showed Red, after his release, marveling over the mistaken idea that women no longer wore bras. Another earlier deleted scene shows more of the uncovering of Andy's escape route, including a guard who is sent down the shaft and who throws up when he realizes the sewer has been breached. Upon hearing this, and realizing Andy's successful escape, Red begins laughing hysterically in his cell, for which he is sent to solitary confinement and where he continues to laugh. See more »\nChronicles the experiences of a formerly successful banker as a prisoner in the gloomy jailhouse of Shawshank after being found guilty of a crime he did not commit. The film portrays the man's unique way of dealing with his new, torturous life; along the way he befriends a number of fellow prisoners, most notably a wise long-term inmate named Red. Written by J-S-Golden"
+                android:textSize="16sp"
+                android:textColor="@color/colorBlack"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>
