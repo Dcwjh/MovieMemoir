@@ -5,9 +5,8 @@
 - 首页登录界面
 
 
-<img src="./image/login.png" width = "200" height = "400" alt="首页登录界面" align=center />
-
-![首页登录界面](./image/login.png) 
+<img src="./image/login.png" width = "200" height = "400" alt="首页登录界面" align="center" />
+ 
 
 - app主界面
 
