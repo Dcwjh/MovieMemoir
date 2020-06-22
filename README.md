@@ -34,8 +34,8 @@ API用到IMDB和google map service
 
 - 电影统计
 
-<img src="./image/total1.png" width = "200" height = "400" alt="首页登录界面" align="middle" />
-<img src="./image/total2.png" width = "200" height = "400" alt="首页登录界面" align="middle" />
+<img src="./image/total1.png" width = "200" height = "400" alt="首页登录界面" />
+<img src="./image/total2.png" width = "200" height = "400" alt="首页登录界面"  />
 
 
 - 电影收藏
@@ -46,8 +46,6 @@ API用到IMDB和google map service
 - 电影院展示
 
 <img src="./image/map.png" width = "200" height = "400" alt="首页登录界面" align="middle" />
-
-![map]()
 
 - 用户注册
 
@@ -63,6 +61,23 @@ API用到IMDB和google map service
 
 3. 用Android Studio下载项目并用gradle构建项目：构建项目之前改几个参数，确保能够正常访问
 
+> 更改IP
+位置：src/main/java/com/monash/moviememoir/networkconnect/ReportNetworkConnection.java
+
+ private static final String BASE_URL =
+            "http://****:8080/UserMovieMemoir/webresources/";
+****:改成自己的IP
+
+> IMDB API：
+src/main/java/com/monash/moviememoir/networkconnect/IMDbConnect.java
+
+在`https://imdb-api.com/ `网址中申请自己的API, 替换文件下的* `final String methodPath = "SearchMovie/********/" + keyword;`
+
+> google map API 申请谷歌map API
+替换`src/release/res/values/google_maps_api.xml`文件下的`<string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">YOUR_KEY_HERE</string>
+</resources>` YOUR_KEY_HERE
+
+这样基本就可以正常运行了
 
 
 
