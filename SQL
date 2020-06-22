@@ -1,0 +1,320 @@
+CREATE TABLE users(
+    userid BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    username VARCHAR(100) NOT NULL,
+    surname VARCHAR(100) NOT NULL,
+    gender VARCHAR(10) DEFAULT 'male' CHECK(gender IN ('female', 'male')) ,
+    DoB DATE,
+    address VARCHAR(255),
+    state VARCHAR(255),
+    postcode VARCHAR(10)
+);
+
+CREATE TABLE credentials(
+    registerid BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL,
+    signupdate DATE NOT NULL,
+    userid BIGINT REFERENCES users(userid) ON DELETE CASCADE
+);
+    
+CREATE TABLE cinema(
+    cinemaid BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    cinemaname VARCHAR(100) NOT NULL,
+    location VARCHAR(10) NOT NULL
+);
+    
+CREATE TABLE memoir(
+    recordid BIGINT PRIMARY KEY GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1),
+    moviename VARCHAR(100) NOT NULL,
+    release DATE NOT NULL,
+    watchtime TIMESTAMP NOT NULL,
+    comment long VARCHAR NOT NULL,
+    score SMALLINT NOT NULL CHECK (score > 0 AND score < 100),
+    userid BIGINT REFERENCES users(userid) ON DELETE CASCADE,
+    cinemaid BIGINT REFERENCES cinema(cinemaid)
+    
+);
+
+
+INSERT INTO ROOT.USERS (USERNAME, SURNAME, GENDER, DOB, ADDRESS, "STATE", POSTCODE) 
+	VALUES ('Charlie', 'Smith', 'male', '1984-02-01', '28/388 George St, Sydney 
+NSW', 'New South Wales', '2000');
+INSERT INTO ROOT.USERS (USERNAME, SURNAME, GENDER, DOB, ADDRESS, "STATE", POSTCODE) 
+	VALUES ('Linda', 'Williams', 'female', '1999-04-11', '81 Beauchamp Rd, Matraville 
+NSW', 'New South Wales', '2036');
+INSERT INTO ROOT.USERS (USERNAME, SURNAME, GENDER, DOB, ADDRESS, "STATE", POSTCODE) 
+	VALUES ('Jake', 'Jones', 'male', '2020-02-01', '1323 Old Northern Rd, Glenorie 
+NSW,', 'New South Wales', '2157');
+INSERT INTO ROOT.USERS (USERNAME, SURNAME, GENDER, DOB, ADDRESS, "STATE", POSTCODE) 
+	VALUES ('hshsb', 'jshzvxh', 'male', '2020-05-03', 'bxb', 'NSW', '1234');
+INSERT INTO ROOT.USERS (USERNAME, SURNAME, GENDER, DOB, ADDRESS, "STATE", POSTCODE) 
+	VALUES ('Jianhai', 'Wang', 'male', '2020-05-31', '261-263 King St, Newtown NSW 2042', 'NSW', '2007');
+
+
+INSERT INTO ROOT.CINEMA (CINEMANAME, LOCATION) 
+	VALUES ('Event Cinemas ', '2000');
+INSERT INTO ROOT.CINEMA (CINEMANAME, LOCATION) 
+	VALUES ('Palace Cinemas', '2008');
+INSERT INTO ROOT.CINEMA (CINEMANAME, LOCATION) 
+	VALUES ('HOYTS Broadway', '2007');
+INSERT INTO ROOT.CINEMA (CINEMANAME, LOCATION) 
+	VALUES ('Dendy Cinemas Newtown', '2042');
+INSERT INTO ROOT.CINEMA (CINEMANAME, LOCATION) 
+	VALUES ('IMAX Theatre Sydney (Reopening 2020)', '2000');
+
+INSERT INTO ROOT.CREDENTIALS (USERNAME, PASSWORD, SIGNUPDATE, USERID) 
+	VALUES ('CharlieS194338@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '1980-04-06', 1);
+INSERT INTO ROOT.CREDENTIALS (USERNAME, PASSWORD, SIGNUPDATE, USERID) 
+	VALUES ('LindaW194339@gmail.com', 'fcea920f7412b5da7be0cf42b8c93759', '1982-04-30', 2);
+INSERT INTO ROOT.CREDENTIALS (USERNAME, PASSWORD, SIGNUPDATE, USERID) 
+	VALUES ('JakeJ194342@gmail.com', '25d55ad283aa400af464c76d713c07ad', '1970-07-12', 3);
+INSERT INTO ROOT.CREDENTIALS (USERNAME, PASSWORD, SIGNUPDATE, USERID) 
+	VALUES ('wangjianhai@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2020-05-31', 5);
+
+
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('La vita è bella', '1997-12-20', '1999-06-25 20:00:00.0', 'I typically don''t care much for sub-titled movies. Foreign films to me are slow and about nothing. So I naturally went to see Life is Beautiful with a chip on my shoulder. I wanted to hate it. I wanted it to be just another movie that Hollywood was praising to show that they were an intelligent bunch of people. Oh boy was I in for the surprise of my life. Not only is this film good, I honestly believe that it was the second best film of 98, next to Saving Private Ryan. The mere fact that Shakespeare in Love won best picture over not only Ryan but over this, is a joke. It''s actually funny. Benigni did everything in this film. He wrote, produ ced, directed and probably swept the floors at night. There is that much raw energy in this film. There really is. For someone to have that kind of vision is truly incredible.
+ And not only is the film a terrific cinematic experience because of the importance and seriousness of the subject matter, but it is one of the funnier films I''ve ever seen. When Roberto is translating the German soldiers insructions to his son so that he isn''t scared, it is at that moment that you realize you are under his spell. 
+He''s got you and no matter how much sceptisism you may have about the film you know you''re witnessing a classic in every sense of the word.
+I loved this film. Loved everything about it and I am so glad that I got to see it and cheer Benigni at the Oscars. He certainly deserved his best actor award and he should have gotten more.', 87, 1, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Lion King', '1994-07-15', '2000-01-01 15:40:00.0', 'The Lion King is a great film. Along with a great story (inspired by William Shakespeare''s Hamlet), terrific animation, and an all star cast of voices, there are the lessons that are learned from this film (despite being a little rough for the younger children). Like responsibility and honor.
+I rank this animated film among the great films I have ever seen. It was part of my childhood and it is a film experience I will never forget. And hopefully, you won''t either. A++', 98, 1, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Big Fish', '2003-01-09', '2003-12-24 19:20:00.0', 'I often find that in order to be captivating, a film these days needs to be stressfully suspenseful or have a complicated story line. This film had neither, and yet I found myself hoping it wouldn''t end while at the same time, anxiously awaiting its conclusion.
+ I have to admit, I was distrustful of Burton as many of his more recent films have had less-than-satisfying conclusions. Nonetheless, I went to see Big Fish (3 days before its release in Canada) with no expectations and was astounded. This movie is an absolute treat for our hearts, ears and especially our eyes with each cartoon/fantasy-like scene painted with Tim Burton''s reliable brilliance and magical touch. Ewan McGregor is pure sunshine and Albert Finney gives one of the greatest performances of the year- he *is* Big Fish. But I suppose that when you strip away the beauty, the doll-house sets and all the abracadabra of cinematography and modern day technology, all you have is a very simple story, and therein lies the heart of this film; that one can create their own legacy, "the story of my life." 
+Not through either extreme of extraordinary adventure or unbelievable lies, but through the art of storytelling- and THAT is what this film is about. It is through our *stories* that we are immortal.
+Go see this movie, bring the kids, bring your date, bring your parents! It is for everyone...everyone who appreciates a visually and emotionally beautiful irregular story about a regular person''s life.
+', 86, 1, 1);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Truman Show', '1998-06-05', '2005-07-10 14:00:00.0', '"The Truman Show" owes a lot to the direction of Peter Weir. Weir refuses to pump out the movies in a search for extra dollars. Instead he chooses wisely and directs brilliantly.
+ Just by looking at a list of his movies will surprise and even amaze you. So as you would imagine "The Truman Show" is another success.Truman Burbank has the perfect life, or so he thought until finally his life long suspicions about his world begin to unravel.
+ Even though the idea for Truman is not totally original, it is thought provoking enough and allows the audience to wonder, what if? If you think this couldn''t happen, just look back over the years at the stupidity of the human race and think again.
+Jim Carrey once again nails his role, as do the entire cast. It is rare he fails to perform at a level that perfectly complements the movie and its genre. This is something he does not receive enough credit for. Acting for a comical role or a more dramatic role requires no less effort for the performance to be spot on.', 77, 1, 1);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Intouchables', '2011-11-02', '2011-11-27 17:00:00.0', 'Do not look at this through the prism of "Foreign Films". You''d be wasting your time and miss something far too important.
+Hollywood does scale like nobody else, leaving the competition gasping in its wake. France does intimacy, and brutality. 
+Nothing is sacred. And rather than try to revive the New Wave or emulate Hollywood like most widely seen French films of late, "Intouchables" harnesses its core strengths - ease with intimacy, willingness to ridicule anything and brutal honesty - and delivers one of the funniest, most honest and touching films I have ever seen.
+Sy is a failed robber, going through the motions and playing the stereotypical jobless émigré. Cluzet is a romantic and melancholy mind trapped in a useless body. The circumstances that bring them together are too funny to spoil here, but meet they do, and an awkward relationship quickly blossoms as they bring out the best in each other.
+The film''s simplicity is delightfully misleading: the script is a masterpiece of comedy writing, and however good the rest of the cast is, the central duo is magical. Sy''s comic timing will have you in stitches, but it is his honesty and vulnerability that make you fall in love with the character. 
+Cluzet isn''t your typical sad-sack, instead, much of the finest pleasures in the film consist in watching him use his keen mind to mess with the world around him (a subplot about an abstract painting really takes the biscuit, you''ll know it when you see it).
+This is one of the most unique, beautiful and honest friendships ever committed to film. It will make you laugh, it will make you cry... a delightful celebration of everything in life that makes it worthwhile.', 92, 1, 3);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Shawshank Redemption', '1994-10-14', '2018-06-15 20:40:00.0', 'I''ve lost count of the number of times I have seen this movie, but it is more than 20. It has to be one of the best movies ever made. 
+It made me take notice Morgan Freeman and Tim Robbins like I had never noticed any actors before.I have from a very young age been a huge fan of anything Stephen King writes and had already read the short story that this movie is based on years prior to seeing this movie.
+Not everything Stephen King has written that gets turned into a movie comes out well, but this is as close to perfection as it gets and has everything you could ever want in a movie.
+Something that is outstanding is the fact that it has no real action, no special effects and no gimmicks. 99% of the movie is just men in a prison uniforms talking. Yet it absolutely hooks you almost from the beginning and has you glued to the screen to the end.
+For me what really makes this film one of the best is the message of eternal hope it conveys throughout. The never ever give up hope attitude of the main character so well conveyed by Tim Robbins. The ending is just spine tingling every time I see it, no matter how many times I have seen it.
+Brilliant, brilliant movie and a must see for everyone.', 99, 1, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Avengers: Endgame', '2019-04-24', '2019-04-25 20:00:00.0', 'Unpopular opinion. Let me start by saying that Endgame is not a bad film. In fact it was a decent film. But nothing more.
+ Maybe I was expecting a masterpiece like Infinity War due to all this hype. The first 2 hours of the movie are really boring. They try to build up many emotional moments only to destroy them with a joke the next minute. And there are really MANY jokes that feel out of place. 
+Endgame uses the previous marvel movies to give you a good story, without building it itself. It''s like the writers didn''t care to give us a proper story. They just filled it with many dramatic moments.
+ Also, there was no action in the first 120 minutes. Plus, I did not like the way they treated Thor at all. They made him a comic relief in the worst way possible. I wonder how Thor fans feel after watching this. The last battle was epic and beautiful but that''s all I really enjoyed. The cgi was top notch. 
+Also, the way they ended Cap''s story, meh... Yeah we got it, you want to make people cry and give us the end of an era, but at least do it without creating dozens of plot holes. The 3 hours went by fast, but I wouldn''t watch it again in theaters (I had planned to watch it at least 1 more time). This could be so damn good... Disappointed.
+', 66, 1, 3);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Lion King', '2019-07-12', '2019-07-19 15:20:00.0', 'This is by far and away one of my top movies of all time and definitely a movie that I can say the lines pretty much the whole way through.
+After thinking about "what I was disappointed with", I would say the following:
+1. The broadway voices of Nathan lane, Ernie sambella and Jeremy irons really added that punch to the characters that you "don''t know that you''re missing till it''s gone". Here I feel these characters fall flat with the "less projecting voices" and it was very noticeable. Seth Rogan was the best, but still, the missing "broadway aspect" these voices carried made the movie fall flat where it just could have been cast better???
+2. So many of the little humorous exchanges with the hyenas and with rafiki were taken away. Part of the magic of the lion king was in the humor which was lost in this film. They did try and compensate a little, but I feel the laughter was just not there. Whoopi goldberg and cheech Marin were comedians, why was this not explored more to bring new comedians in for the hyenas roles?
+Without the booming voices and humour, you realize that the movie is lacklustre where you are left with the story and the cinematography only. The cinematography is fantastic and I know this is a super hard movie to live up to the original, but I feel a lot of the magic that make this movie "a whole package" was just not there.
+Did not feel the same about Aladdin remake - another movie that was with huge shoes to fill (duh, robin williams) and the Aladdin remake was absolutely fantastic.', 60, 1, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Joker', '2019-08-04', '2019-09-10 19:20:00.0', 'I was a person that saw all the hype and claims of masterpiece as overreacting and overblown excitement for another Joker based film. 
+I thought this looked solid at best and even a bit too pretentious in the trailer, but in here to say I was incredibly wrong. This is a massive achievement of cinema that''s extremely rare in a day and age of cgi nonsense and reboots. 
+While this is somewhat of a reboot of sorts, the standalone origin tale is impeccable from start to finish and echoes resemblance to the best joker origin comics from the past. Joaquin bleeds, sweats, and cries his every drop into this magnificently dedicated performance. Heath Ledger would be proud. 
+This is undoubtedly the greatest acting performance since Heath''s joker. The directing and writing is slickly brilliant and the bleak settings and tones are palpable throughout. When this film was over the place was blown away and every audience member was awestruck that they witnessed a film that could still transport them into a character''s world and very existence. 
+Believe the hype. This is going to be revered as a transcending masterpiece of cinema.', 90, 1, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Star Wars: Episode IX - The Rise of Skywalker', '2019-12-20', '2019-12-22 20:00:00.0', 'Where the Mandalorian feels like somebody taking their own beloved Star Wars fantasy and putting it on screen, this feels like a marketing product. 
+While the direction is enjoyable, the actors are doing a great job, the writing and the story is just checking boxes.
+Retcon what the fans hated in the last movie? Done. Callbacks to the originals? Done. Cute new animals and droid for toys to sell? Done. New stormtrooper looks for game skins? Done. Are we blowing up random planets? Sure...
+Best to get your SW fix from the expanded universe stuff. Pehaps where the company didn''t spend a billion dollars on marketing, there''s still room for a kid to look over the setting alien suns of his planet and dream of something more.', 58, 1, 3);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Shawshank Redemption', '1994-10-14', '2008-02-18 20:40:00.0', 'This movie is not your ordinary Hollywood flick. It has a great and deep message. This movie has a foundation and just kept on being built on from their and that foundation is hope.
+Other than just the message of this movie the acting was phenomenal. Tim Robbins gave one of the greatest performances ever. He was inspiring, intelligent and most of all positive. His performance just made me smile. Robbins plays Andy Dufresne who was wrongfully convicted of murdering his wife and her lover. He is gets to life sentences but yet never gives up hope.
+ In he becomes friends with Ellis Boyd "Red" Redding played by Morgan Freeman. Freeman who gives the finest performance of his career has unlike Robbins lost hope. He is in deep regret of the crime that he committed. His way of deflecting the pain away is by trying to not feel anything at all. With his friendship with Andy he learns that without our hopes and dreams we have nothing.
+ Andy also becomes friends with the rest of Red''s group. James Whitmore also gave a great performance as Brooks Halten who gets out of prison parole but in the words of Red he has been "institutionalized".
+The directing by Frank Darabont was just magnificent. He kept this movie at a great steady pace along with the writing and great cinematography. He portrayed prison life in such a horrifying way, but not in terms of the physical pain but the stress and pain that wares mentally on the inmates, some of which deserve a second chance.
+Whatever you do, don''t listen to the people who say this movie is overrated because this is one of the most inspiring and greatest movies ever. It has everything you could possibly want.', 99, 2, 1);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Hachi: A Dog''s Tale', '2010-03-12', '2010-03-15 16:20:00.0', 'Finally a film without explosions, computer graphics, and violence. 
+A family film with a message. Adults will relate to the story of life-long friendship and loyalty. Children will love the "dog story" A tender story will huge box office potential. The possible "sleeper hit" of the holidays.
+ Pet lovers everywhere will relate to this film and will leave theaters in tears. A weepy, wonderful film about the bond that develops between one man and a dog after a chance meeting at a train station. Bring extra tissues! 
+Based on a true story, this film was shot mostly in Woonsocket, Rhode Island at a historic old train station. Beautifully shot and edited. The film runs less than 2-hours. The film generally adheres to the actual true story of a dog in Japan.
+ The dog became a national treasure and a monument was erected to honor him.', 88, 2, 5);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Inception', '2010-09-01', '2010-09-07 19:40:00.0', 'Dom Cobb leads a highly skilled team, specializing in stealing secrets from people''s minds by entering their dreams. When they are hired by a mysterious businessman, Cobb finally has a shot at redemption, but not before achieving the near impossible. Rather than stealing an idea, they must do the complete opposite: Inception. Planting the seed of an idea.
+Inception has a multi-layered plot, quite literally in fact. It focuses on the emotional journey of its lead character, Cobb, but at the same time thrusts the audience into multiple levels of action packed story- telling, very distinct from one another, but all finely connected. It has been described by critics as "a film that rewards intellect", and I can assure you that it is exactly that. Director Christopher Nolan challenges the audience to keep up, and rewards those who can with a breathtaking spectacle, one that has the capability to leave you awestruck. 
+The best part about it is that while you may feel you need to watch it again to be able to fully absorb the experience, chances are, you will probably want to.
+Christopher Nolan brings his unique vision to the screen with the help of a star-studded cast, including the likes of Leonardo Dicaprio (The Departed), Joseph Gordon-Levitt (500 Days Of Summer), Ellen Page (Juno), Marion Cotillard (Public Enemies), Cillian Murphy (Batman Begins), and Michael Caine (The Dark Knight), as well some amazing photography by long time collaborator Wally Pfister. The thrilling music in the film is provided by none other than Hans Zimmer, who was also set the mood for Nolan''s previous film, The Dark Knight.
+While it may seem simple at its outset, Inception is an extremely complex film, delving deep into the subconscious of the human mind. Technical brilliance and visual splendor have rarely blended together as beautifully. The emotional depth and explosive action complement each other perfectly, delivering a film that is at the same time both heart- wrenching and heart-pounding. It''s a film that manages to engross you with its complexities, yet comes together seamlessly, and will have you at the edge of your seat, quite literally from start to finish.
+Inception is magnificent.', 99, 2, 4);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Rang zi dan fei', '2010-12-16', '2011-01-01 19:40:00.0', 'Review: What a brilliant movie but I must admit, I missed a lot of the plot because the subtitles are going too fast. With that aside, the witty script and brilliant performances from Chow Yun- Fat, (Master Huang) and Wen Jiang, (Pocky Zhang), made this crazy, unique, and definitely unpredictable ride, 
+a joy to watch. When I heard that this movie had a western backdrop, I thought that it was going to be, more like a Cowboys & Indians type of storyline but once the movie gets going, it''s a funny political comedy about a ruthless bandit who steals from the rich to give to the poor.
+ The script is top class but it does get a bit complicated after a while, mainly because you have to concentrate on the annoying subtitles. The cinematography and costumes are authentic and the real governor, who wouldn''t stop going on about losing his wife, cracked me up. The clever mind and coolness of Pocky Zhang is truly something to watch and the few action scenes were also impressive. Anyway, I thoroughly enjoyed the movie, even though I lost the plot but it''s definitely worth a watch, for its originality and crazy storyline. Enjoyable! ', 78, 2, 4);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Truman Show', '1998-06-05', '2016-09-13 16:40:00.0', 'I''ve seen The Truman Show a multitude of times, and each time it gets better. First watching it at a young age (Roughly 10 years old), I never picked up on much of the deeper meaning behind the film. The idea of someone''s whole life being a television program was simply entertaining. 
+Now, as an older viewer and with more experience in analyzing books and movies, I can really pick up on the satirical meaning behind the plot. Truman plays the star of a 24/7 television program. His entire life is broadcasted for all the world to see. He is raised to believe that there is no real reason to try and leave his perfect "island". Throughout the film, we watch as Truman tries time and time again to discover the truth behind his life, and as he attempts to escape. 
+The struggle he experiences while trying to break free from the artificial world can be seen as a satirical message. The world is trying to oppress you, and although difficult, you can escape. This is supported by a statement made by the creator of the Truman show. He said, "We accept the reality of the world with which we are presented. It''s as simple as that". Several other hidden messages (Ideas) appear throughout the film. 
+All the actors who play roles in Truman''s life, are indeed fake. Despite directly lying to a person whose life is immediately affected by that lie, the actors/actresses show no emotion for Truman. This is comparable to the lack of care society has for the majority of its citizens. Overall, The Truman Show is filled with subliminal messages and hidden meanings, all of which can be directly tied back to daily life.', 85, 2, 1);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Contratiempo', '2017-09-15', '2018-05-07 15:40:00.0', 'Being an avid Thriller watcher, I came across this Gem by accident....and what an adventure this movie takes you on. Who Done It, comes to mind and just when you have solved it, it then twists you into another scenario. It is in Spanish and there are Subtitles, but it doesn''t take away from this masterpiece. Well done, Oriol Paulo for his direction, and well done on the film editing. 
+I will be watching out for more of Paulo''s films. Well and truly worth the watch.', 83, 2, 5);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Wo bu shi yao shen', '2018-07-05', '2018-07-11 19:40:00.0', 'This is one of the best Chinese movies in history. The film discusses the grey areas under Chinese drug control and the boundary between law and human feelings. The whole movie has promoted the Chinese society''s reflection on the control of drugs for the treatment of severe diseases and the excessively high price. 
+To some extent, it also satirizes the inadequacy of the Chinese government in related issues. in fact, after the movie hit, people enthusiastically discussed related issues on the internet, which has also prompted the Chinese government to further make more positive changes to the inadequacy of current drug control. Such movie themes are rare under the current control system of the Chinese government for movie and TV creation themes.
+ I don''t understand at all that one of the comments written by IMDB user thebigsick thinks that the theme of this movie is a cliche, and even thinks that this movie has won good public praise and attention purely by means of propaganda and hype. 
+Sorry, I can''t understand why you think that way. The theme of this movie alone is worth thumbs up. Almost all Chinese movies will use a lot of online publicity before and at the beginning of their release. this is a commercial movie, there is no problem with doing so. However, not all movies will gain a good reputation because of hype. if the movie itself is very bad, and only depends on a lot of publicity and hype in the early stage. in less than three days, it will get a lot of bad reviews. Because the audience is not a fool. 
+This movie scored 8.9 points on the well-known Chinese film review website douban movie ( you can understand it as China''s IMDB, douban movie is a platform with a lot of credibility in China. many people will refer to douban''s score before deciding whether to spend money on a movie,only a very small number of Chinese movies can score more than 7 points on douban ).
+Within a week of this movie''s release, it has accumulated 1.8 billion RMB ( about 27 million us dollars ) in box office. Whether you like it or not, this proves that it is a good movie. So the user thebigsick didn''t understand the real meaning of this movie at all, or why Chinese people think it is a good movie.', 87, 2, 4);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Hotel Mumbai', '2019-03-14', '2019-04-05 20:30:00.0', 'This movie is difficult to watch because of some of the terrible things that happen in the story but I can recommend it because the performances were strong and the pacing/storytelling captured the tension throughout. You will come out a little different after seeing this film.', 86, 2, 5);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Star Wars: Episode IX - The Rise of Skywalker', '2019-12-20', '2020-01-01 19:40:00.0', 'I recently saw a review on YouTube that made me think about this last Disney trilogy and I almost came to accept that maybe I was wrong and the story arc for Luke and Leia made sense. But then I realize that these movies had very little to do with any of the original movies characters and I digress. 
+How Disney has turned this into a cash cow is shameless, greedy and inmoral. From the very beginning I expected a more dramatic movie, these characters have been with us for forty years! 
+I don''t understand why Mark Hamil was ignored when writing the script to these movies, nor why did these movies need a new story when there are decades of comics and books with lore and great stories? Disney had a once in a lifetime opportunity to conclude what George Lucas started almost half a century later, and they decided to turn this over to people who never read the source material nor cared about lore. 
+During all these years Mark H never stopped being Luke and Carrie was Leia, they never took on roles that they were known for more. It saddens me that we will never have a memory of all our beloved original characters together for at least one scene at the end of this all.', 33, 2, 3);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Spider-Man: Into the Spider-Verse', '2018-12-21', '2020-01-01 13:40:00.0', 'Spider-Man: Into the Spider-Verse is more than a pleasant surprise, which was at first a risky move for Sony judging by their recent "successes".
+From the presentation alone it is easily decipherable that a lot of love and passion was put into this project, making it the visual masterpiece that it is.
+The story, while being mostly formulaic still does enough to satisfy new and returning audiences to the superhero genre. Combined with the visual style and presentation, Into the Spider-Verse almost feels fresh.
+The biggest issue, which is more of a personal preference is the music. The film chooses today''s hip hop music over an actual musical score which is understandable but still managed to take me out of the film.
+Another slightly smaller issue is the epilogue, rather the way the film sets it up. Press a button and save the world. It''s as silly as it sounds.
+In terms of comedy, Into the Spider-Verse does a solid job, but manages to be annoying at times with its usage of Spider-Ham.
+On the contrary Spider-Man: Into the Spider-Verse is worth a watch solely for its visual style and presentation. The story is just icing on the cake.', 18, 2, 1);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('La vita è bella', '1994-10-14', '2003-03-27 20:40:00.0', 'I find it sad that so many people are so narrow-minded that they will not watch a movie that is black and white or, in this case, is subtitled. I feel sorry for people who refuse to watch a movie like Life Is Beautiful just because it is a foreign film. They have no idea what a beautifully acted and directed film this is, and they''ll never know what an amazing experience they are missing.
+Life Is Beautiful manages to walk the extremely thin line between humor, fantasy, and tragedy. Sure, the film is clearly comedic, but nevertheless it manages to very effectively communicate the tremendous losses suffered in the Nazi concentration camps and has scenes at least as intense as any scene in Schindler''s List.
+This is one of the best films that I have ever seen. It manages to be so encompassing that you hardly notice the subtitles are even there. I proudly cast my vote of 10.', 95, 3, 4);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Avatar', '2010-01-04', '2010-01-06 15:10:00.0', 'I saw this epic last night at the Empire Leicester Sq in London, which is a superb venue in which to view this film. Huge screen, excellent sound and an extraordinary Dolby, 3 dimensional image. The whole effect is mind blowing.
+This is a ''Must see'' movie, innovative, and extraordinary. I think it will be regarded by most cinema goers as another milestone in the history of the art. The level of realism achieved is remarkable, and although the film is relatively long in real time, it retains it''s excitement and holds the audience''s attention to the end.
+Performances are good, but this is not the sort of film that dwells on big star value for the actors, although Sigorney Weaver does shine and delivers a very convincing performance, as do the rest of the cast. But as there is so much entertainment and action value on screen the human element does not dominate in the usual way.
+As Writer/Director, James Cameron deserves high praise for this creation and in my opinion it will break box office records. I thoroughly enjoyed this film. ', 97, 3, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Truman Show', '1998-06-05', '2011-09-19 09:40:00.0', 'It not so easy to be Jim Carrey, because nobody takes you seriously after many funny movies, even when he is ABSOLUTELY BRILLIANT. He proved himself so many times in dramas, he is so great actor.
+This time, there is no grade for the script, 10 is too low, maybe 10++ would suffice. I must agree that in everything around us we can see only what we are capable to see, but this movie gives so many levels and many people would see it differently and ALL WILL BE THRILLED by this movie.
+People who are interested in the phenomenon of ''Big Brother'',a kind of TV voyeurism (so present today) will see the ultimate human desire to observe somebody''s life, from its beginning, and without consent of the person which is the object of that observing. There is nothing special in this man who is watched, but we like to have mirrors of our lives in other people (who knows why).
+Of course, the next layer is ethical: do we have the right to watch somebody''s life, because we don''t talk about a rat, but a human being who doesn''t know that he is watched in a TV show.
+If we go further, we must ask ourselves, what is real in our life? There is is always some possibility that we are observed, directed, guided, monitored..., by somebody and our life is not so authentic as we used to think.
+Next layer: this movie talks about freedom and personal choice. How we want to be free, no matter what are the other alternatives are. Free to love who we want, free to go, free as much as it is possible. Of course, if we want to be free, if our mind and society stop us.
+FINALLY... The most interesting level is the spiritual one.This is a guidebook of the spiritual path. At first, this world is so secure and predictable place. We have our little lives and we can define everything what is important for us, to have some simplification of reality, to feel safe. This kind of ordinary life is a bit boring, but we are in a herd, we are not alone in our dungeon.
+', 92, 3, 1);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Prestige', '2006-08-20', '2006-08-21 12:20:00.0', 'I went to see a critics preview of The Prestige this afternoon and to my surprise I found the film to be one of the best I have seen all year so far, and that writers can come up with an excellent script it they would only try a little harder. The acting performances by Hugh Jackman, Christian Bale and Michael Caine were the best I have see in a long while. The only objection I had to the film was that it was a little long, but once you leave the theater you will discuss the film and it many twists and turns. My wife and myself discussed it all the way home from the movie theater. This is a winner and should be up for some academy award statues, and my recommendation is go see this as soon as you can, you will not be disappointed.', 80, 3, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Liu lang di qiu', '2019-02-05', '2019-08-05 22:50:00.0', 'Just watched the IMAX 3D movie. Trust me, don''t do it any other way. Imagine ten of thousands of fusion thrusters are pushing our planet away from a dying sun on a IMAX screen. 
+The visual effect is impressive and goes well with the story. The story is not everyday Hollywood style: Superhero saves the day; everyone else is there to give a round of applause. This movie brings a serious question to the audience: What are you gonna do facing an unavoidable, irresistible disaster to our civilization? All characters in the movie are ordinary people and everyone gives their answer with shining humanity. 
+Against all the odds no one gives in without a good fight. The chance of success is close to zero but they choose hope. All the efforts add up and make impossible nothing. It is a Sci-Fi fan''s feast you dont want to miss.', 99, 3, 3);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Gisaengchung', '2019-05-30', '2020-02-04 19:00:00.0', 'The most original film of 2019 and it is wickedly funny and darkly disturbing all at the same time. The narrative and the actors were excellent. One of the better endings of a movie in quite a while. Class warfare at its best.', 92, 3, 3);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Joker', '2019-08-04', '2019-09-10 19:20:00.0', 'I was a person that saw all the hype and claims of masterpiece as overreacting and overblown excitement for another Joker based film. 
+I thought this looked solid at best and even a bit too pretentious in the trailer, but in here to say I was incredibly wrong. This is a massive achievement of cinema that''s extremely rare in a day and age of cgi nonsense and reboots. 
+While this is somewhat of a reboot of sorts, the standalone origin tale is impeccable from start to finish and echoes resemblance to the best joker origin comics from the past. Joaquin bleeds, sweats, and cries his every drop into this magnificently dedicated performance. Heath Ledger would be proud. 
+This is undoubtedly the greatest acting performance since Heath''s joker. The directing and writing is slickly brilliant and the bleak settings and tones are palpable throughout. When this film was over the place was blown away and every audience member was awestruck that they witnessed a film that could still transport them into a character''s world and very existence. 
+Believe the hype. This is going to be revered as a transcending masterpiece of cinema.', 90, 3, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Green Book', '2019-03-01', '2019-10-05 13:20:00.0', 'A journey of reawakening in a Country like ours - Gore Vidal called it the United States Of Amnesia - the absurdity of the behavior in the Southern communities even the kindest ones have a jarring effect. 
+Viggo Mortensen is sheer perfection as the all American Italian. The opening of his heart and of his mind is a total joy and Mahershala Ali provides another magnetic character to his already rich list of magnetic characters but what makes this film fly so high is the humanity that Mortensen and Ali infuse their characters with. I loved them and Green Book provided me with one of the most satisfying endings of 2018. It leaves you with the hopeful thought that perhaps we''re not there yet but that we are on our way. Happy New Year!', 78, 3, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Star Wars: Episode IX - The Rise of Skywalker', '2019-12-20', '2019-12-20 19:40:00.0', 'For me Star wars have allways been about good storytelling.
+The original trilogy had a simple but strong and surprising story.
+The prequels had their faults but they still told a great story about how evil could rise to power under the nose of the good guys.
+The story in the rise of skywalker, is not existing. It just chaos. People running around doing stuff in a pace which seems to be an attempt to hide an incredible high amount of plot holes and inconsistencies. Even the ideas which could have been awesome fall flat due to the lack of an overall structure in the story and what seems to be a fear of surprising the fans.
+The use of the force and the depiction of the power structure in the galaxy, is so vague and not in line with what was established in the previous movies, that it almost break the logic of the franchise.
+If you just want a movie with stunning visuals, high amount of fan service and where everything happens as you predicted, then the rise of skywalker may be a good star wars movie.
+I liked the music and the visuals, but the lack of good storytelling and respect for ALL the previous movies mad me sad.', 30, 3, 3);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('La vita è bella', '1997-12-20', '1999-06-25 20:00:00.0', 'I typically don''t care much for sub-titled movies. Foreign films to me are slow and about nothing. So I naturally went to see Life is Beautiful with a chip on my shoulder. I wanted to hate it. I wanted it to be just another movie that Hollywood was praising to show that they were an intelligent bunch of people. Oh boy was I in for the surprise of my life. Not only is this film good, I honestly believe that it was the second best film of 98, next to Saving Private Ryan. The mere fact that Shakespeare in Love won best picture over not only Ryan but over this, is a joke. It''s actually funny. Benigni did everything in this film. He wrote, produ ced, directed and probably swept the floors at night. There is that much raw energy in this film. There really is. For someone to have that kind of vision is truly incredible.
+ And not only is the film a terrific cinematic experience because of the importance and seriousness of the subject matter, but it is one of the funnier films I''ve ever seen. When Roberto is translating the German soldiers insructions to his son so that he isn''t scared, it is at that moment that you realize you are under his spell. 
+He''s got you and no matter how much sceptisism you may have about the film you know you''re witnessing a classic in every sense of the word.
+I loved this film. Loved everything about it and I am so glad that I got to see it and cheer Benigni at the Oscars. He certainly deserved his best actor award and he should have gotten more.', 87, 5, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Lion King', '1994-07-15', '2000-01-01 15:40:00.0', 'The Lion King is a great film. Along with a great story (inspired by William Shakespeare''s Hamlet), terrific animation, and an all star cast of voices, there are the lessons that are learned from this film (despite being a little rough for the younger children). Like responsibility and honor.
+I rank this animated film among the great films I have ever seen. It was part of my childhood and it is a film experience I will never forget. And hopefully, you won''t either. A++', 98, 5, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Big Fish', '2003-01-09', '2003-12-24 19:20:00.0', 'I often find that in order to be captivating, a film these days needs to be stressfully suspenseful or have a complicated story line. This film had neither, and yet I found myself hoping it wouldn''t end while at the same time, anxiously awaiting its conclusion.
+ I have to admit, I was distrustful of Burton as many of his more recent films have had less-than-satisfying conclusions. Nonetheless, I went to see Big Fish (3 days before its release in Canada) with no expectations and was astounded. This movie is an absolute treat for our hearts, ears and especially our eyes with each cartoon/fantasy-like scene painted with Tim Burton''s reliable brilliance and magical touch. Ewan McGregor is pure sunshine and Albert Finney gives one of the greatest performances of the year- he *is* Big Fish. But I suppose that when you strip away the beauty, the doll-house sets and all the abracadabra of cinematography and modern day technology, all you have is a very simple story, and therein lies the heart of this film; that one can create their own legacy, "the story of my life." 
+Not through either extreme of extraordinary adventure or unbelievable lies, but through the art of storytelling- and THAT is what this film is about. It is through our *stories* that we are immortal.
+Go see this movie, bring the kids, bring your date, bring your parents! It is for everyone...everyone who appreciates a visually and emotionally beautiful irregular story about a regular person''s life.
+', 86, 5, 1);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Truman Show', '1998-06-05', '2005-07-10 14:00:00.0', '"The Truman Show" owes a lot to the direction of Peter Weir. Weir refuses to pump out the movies in a search for extra dollars. Instead he chooses wisely and directs brilliantly.
+ Just by looking at a list of his movies will surprise and even amaze you. So as you would imagine "The Truman Show" is another success.Truman Burbank has the perfect life, or so he thought until finally his life long suspicions about his world begin to unravel.
+ Even though the idea for Truman is not totally original, it is thought provoking enough and allows the audience to wonder, what if? If you think this couldn''t happen, just look back over the years at the stupidity of the human race and think again.
+Jim Carrey once again nails his role, as do the entire cast. It is rare he fails to perform at a level that perfectly complements the movie and its genre. This is something he does not receive enough credit for. Acting for a comical role or a more dramatic role requires no less effort for the performance to be spot on.', 77, 5, 1);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Intouchables', '2011-11-02', '2011-11-27 17:00:00.0', 'Do not look at this through the prism of "Foreign Films". You''d be wasting your time and miss something far too important.
+Hollywood does scale like nobody else, leaving the competition gasping in its wake. France does intimacy, and brutality. 
+Nothing is sacred. And rather than try to revive the New Wave or emulate Hollywood like most widely seen French films of late, "Intouchables" harnesses its core strengths - ease with intimacy, willingness to ridicule anything and brutal honesty - and delivers one of the funniest, most honest and touching films I have ever seen.
+Sy is a failed robber, going through the motions and playing the stereotypical jobless émigré. Cluzet is a romantic and melancholy mind trapped in a useless body. The circumstances that bring them together are too funny to spoil here, but meet they do, and an awkward relationship quickly blossoms as they bring out the best in each other.
+The film''s simplicity is delightfully misleading: the script is a masterpiece of comedy writing, and however good the rest of the cast is, the central duo is magical. Sy''s comic timing will have you in stitches, but it is his honesty and vulnerability that make you fall in love with the character. 
+Cluzet isn''t your typical sad-sack, instead, much of the finest pleasures in the film consist in watching him use his keen mind to mess with the world around him (a subplot about an abstract painting really takes the biscuit, you''ll know it when you see it).
+This is one of the most unique, beautiful and honest friendships ever committed to film. It will make you laugh, it will make you cry... a delightful celebration of everything in life that makes it worthwhile.', 92, 5, 3);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Shawshank Redemption', '1994-10-14', '2018-06-15 20:40:00.0', 'I''ve lost count of the number of times I have seen this movie, but it is more than 20. It has to be one of the best movies ever made. 
+It made me take notice Morgan Freeman and Tim Robbins like I had never noticed any actors before.I have from a very young age been a huge fan of anything Stephen King writes and had already read the short story that this movie is based on years prior to seeing this movie.
+Not everything Stephen King has written that gets turned into a movie comes out well, but this is as close to perfection as it gets and has everything you could ever want in a movie.
+Something that is outstanding is the fact that it has no real action, no special effects and no gimmicks. 99% of the movie is just men in a prison uniforms talking. Yet it absolutely hooks you almost from the beginning and has you glued to the screen to the end.
+For me what really makes this film one of the best is the message of eternal hope it conveys throughout. The never ever give up hope attitude of the main character so well conveyed by Tim Robbins. The ending is just spine tingling every time I see it, no matter how many times I have seen it.
+Brilliant, brilliant movie and a must see for everyone.', 99, 5, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Avengers: Endgame', '2019-04-24', '2019-04-25 20:00:00.0', 'Unpopular opinion. Let me start by saying that Endgame is not a bad film. In fact it was a decent film. But nothing more.
+ Maybe I was expecting a masterpiece like Infinity War due to all this hype. The first 2 hours of the movie are really boring. They try to build up many emotional moments only to destroy them with a joke the next minute. And there are really MANY jokes that feel out of place. 
+Endgame uses the previous marvel movies to give you a good story, without building it itself. It''s like the writers didn''t care to give us a proper story. They just filled it with many dramatic moments.
+ Also, there was no action in the first 120 minutes. Plus, I did not like the way they treated Thor at all. They made him a comic relief in the worst way possible. I wonder how Thor fans feel after watching this. The last battle was epic and beautiful but that''s all I really enjoyed. The cgi was top notch. 
+Also, the way they ended Cap''s story, meh... Yeah we got it, you want to make people cry and give us the end of an era, but at least do it without creating dozens of plot holes. The 3 hours went by fast, but I wouldn''t watch it again in theaters (I had planned to watch it at least 1 more time). This could be so damn good... Disappointed.
+', 66, 5, 3);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Lion King', '2019-07-12', '2019-07-19 15:20:00.0', 'This is by far and away one of my top movies of all time and definitely a movie that I can say the lines pretty much the whole way through.
+After thinking about "what I was disappointed with", I would say the following:
+1. The broadway voices of Nathan lane, Ernie sambella and Jeremy irons really added that punch to the characters that you "don''t know that you''re missing till it''s gone". Here I feel these characters fall flat with the "less projecting voices" and it was very noticeable. Seth Rogan was the best, but still, the missing "broadway aspect" these voices carried made the movie fall flat where it just could have been cast better???
+2. So many of the little humorous exchanges with the hyenas and with rafiki were taken away. Part of the magic of the lion king was in the humor which was lost in this film. They did try and compensate a little, but I feel the laughter was just not there. Whoopi goldberg and cheech Marin were comedians, why was this not explored more to bring new comedians in for the hyenas roles?
+Without the booming voices and humour, you realize that the movie is lacklustre where you are left with the story and the cinematography only. The cinematography is fantastic and I know this is a super hard movie to live up to the original, but I feel a lot of the magic that make this movie "a whole package" was just not there.
+Did not feel the same about Aladdin remake - another movie that was with huge shoes to fill (duh, robin williams) and the Aladdin remake was absolutely fantastic.', 60, 5, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Joker', '2019-08-04', '2019-09-10 19:20:00.0', 'I was a person that saw all the hype and claims of masterpiece as overreacting and overblown excitement for another Joker based film. 
+I thought this looked solid at best and even a bit too pretentious in the trailer, but in here to say I was incredibly wrong. This is a massive achievement of cinema that''s extremely rare in a day and age of cgi nonsense and reboots. 
+While this is somewhat of a reboot of sorts, the standalone origin tale is impeccable from start to finish and echoes resemblance to the best joker origin comics from the past. Joaquin bleeds, sweats, and cries his every drop into this magnificently dedicated performance. Heath Ledger would be proud. 
+This is undoubtedly the greatest acting performance since Heath''s joker. The directing and writing is slickly brilliant and the bleak settings and tones are palpable throughout. When this film was over the place was blown away and every audience member was awestruck that they witnessed a film that could still transport them into a character''s world and very existence. 
+Believe the hype. This is going to be revered as a transcending masterpiece of cinema.', 90, 5, 2);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Star Wars: Episode IX - The Rise of Skywalker', '2019-12-20', '2019-12-22 20:00:00.0', 'Where the Mandalorian feels like somebody taking their own beloved Star Wars fantasy and putting it on screen, this feels like a marketing product. 
+While the direction is enjoyable, the actors are doing a great job, the writing and the story is just checking boxes.
+Retcon what the fans hated in the last movie? Done. Callbacks to the originals? Done. Cute new animals and droid for toys to sell? Done. New stormtrooper looks for game skins? Done. Are we blowing up random planets? Sure...
+Best to get your SW fix from the expanded universe stuff. Pehaps where the company didn''t spend a billion dollars on marketing, there''s still room for a kid to look over the setting alien suns of his planet and dream of something more.', 58, 5, 3);
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Prestige', '2006-08-20', '2006-08-21 12:20:00.0', 'I went to see a critics preview of The Prestige this afternoon and to my surprise I found the film to be one of the best I have seen all year so far, and that writers can come up with an excellent script it they would only try a little harder. The acting performances by Hugh Jackman, Christian Bale and Michael Caine were the best I have see in a long while. The only objection I had to the film was that it was a little long, but once you leave the theater you will discuss the film and it many twists and turns. My wife and myself discussed it all the way home from the movie theater. This is a winner and should be up for some academy award statues, and my recommendation is go see this as soon as you can, you will not be disappointed.', 80, 5, 2);
+
+
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Wandering Earth', '2019-12-20', '2019-12-27 22:50:00.0', 'Just watched the IMAX 3D movie. Trust me, don''t do it any other way. Imagine ten of thousands of fusion thrusters are pushing our planet away from a dying sun on a IMAX screen. 
+The visual effect is impressive and goes well with the story. The story is not everyday Hollywood style: Superhero saves the day; everyone else is there to give a round of applause. This movie brings a serious question to the audience: What are you gonna do facing an unavoidable, irresistible disaster to our civilization? All characters in the movie are ordinary people and everyone gives their answer with shining humanity. 
+Against all the odds no one gives in without a good fight. The chance of success is close to zero but they choose hope. All the efforts add up and make impossible nothing. It is a Sci-Fi fan''s feast you dont want to miss.', 99, 5, 3);
+
+
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Gisaengchung', '2019-05-30', '2020-02-04 19:00:00.0', 'The most original film of 2019 and it is wickedly funny and darkly disturbing all at the same time. The narrative and the actors were excellent. One of the better endings of a movie in quite a while. Class warfare at its best.', 92, 5, 3);
+
+
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('Green Book', '2019-03-01', '2019-10-05 13:20:00.0', 'A journey of reawakening in a Country like ours - Gore Vidal called it the United States Of Amnesia - the absurdity of the behavior in the Southern communities even the kindest ones have a jarring effect. 
+Viggo Mortensen is sheer perfection as the all American Italian. The opening of his heart and of his mind is a total joy and Mahershala Ali provides another magnetic character to his already rich list of magnetic characters but what makes this film fly so high is the humanity that Mortensen and Ali infuse their characters with. I loved them and Green Book provided me with one of the most satisfying endings of 2018. It leaves you with the hopeful thought that perhaps we''re not there yet but that we are on our way. Happy New Year!', 78, 5, 2);
+
+
+
+
+INSERT INTO ROOT.MEMOIR (MOVIENAME, RELEASE, WATCHTIME, COMMENT, SCORE, USERID, CINEMAID) 
+	VALUES ('The Intouchables', '2011-11-02', '2011-11-27 17:00:00.0', 'Do not look at this through the prism of "Foreign Films". You''d be wasting your time and miss something far too important.
+Hollywood does scale like nobody else, leaving the competition gasping in its wake. France does intimacy, and brutality. 
+Nothing is sacred. And rather than try to revive the New Wave or emulate Hollywood like most widely seen French films of late, "Intouchables" harnesses its core strengths - ease with intimacy, willingness to ridicule anything and brutal honesty - and delivers one of the funniest, most honest and touching films I have ever seen.
+Sy is a failed robber, going through the motions and playing the stereotypical jobless émigré. Cluzet is a romantic and melancholy mind trapped in a useless body. The circumstances that bring them together are too funny to spoil here, but meet they do, and an awkward relationship quickly blossoms as they bring out the best in each other.
+The film''s simplicity is delightfully misleading: the script is a masterpiece of comedy writing, and however good the rest of the cast is, the central duo is magical. Sy''s comic timing will have you in stitches, but it is his honesty and vulnerability that make you fall in love with the character. 
+Cluzet isn''t your typical sad-sack, instead, much of the finest pleasures in the film consist in watching him use his keen mind to mess with the world around him (a subplot about an abstract painting really takes the biscuit, you''ll know it when you see it).
+This is one of the most unique, beautiful and honest friendships ever committed to film. It will make you laugh, it will make you cry... a delightful celebration of everything in life that makes it worthwhile.', 92, 5, 3);
+
+
