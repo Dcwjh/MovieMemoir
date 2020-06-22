@@ -4,6 +4,9 @@
 # 项目截图
 - 首页登录界面
 
+
+<img src="./image/login.png" width = "200" height = "300" alt="首页登录界面" align=center />
+
 ![首页登录界面](./image/login.png) 
 
 - app主界面
