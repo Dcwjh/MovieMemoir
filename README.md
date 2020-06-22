@@ -78,6 +78,7 @@ src/main/java/com/monash/moviememoir/networkconnect/IMDbConnect.java
 </resources>` YOUR_KEY_HERE
 
 这样基本就可以正常运行了
+项目中还有第三方平台分享也做了，但是模拟器始终安装不上微信app,导致分享失败。
 
 
 
