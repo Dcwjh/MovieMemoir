@@ -15,41 +15,41 @@ API用到IMDB和google map service
 
 - app主界面
 
-<img src="./image/home.png" width = "200" height = "400" alt="首页登录界面" align="middle" />
-<img src="./image/home1.png" width = "200" height = "400" alt="首页登录界面" align="middle" />
+<img src="./image/home.png" width = "200" height = "400" alt="app主界面" align="middle" />
+<img src="./image/home1.png" width = "200" height = "400" alt="app主界面" align="middle" />
 
 - 电影搜索
 
-<img src="./image/moviesearch.png" width = "200" height = "400" alt="首页登录界面" align="middle" />
+<img src="./image/moviesearch.png" width = "200" height = "400" alt="电影搜索" align="middle" />
 
 
 - 电影详情
 
-<img src="./image/moviedetail.png" width = "200" height = "400" alt="首页登录界面" align="middle" />
+<img src="./image/moviedetail.png" width = "200" height = "400" alt="电影详情" align="middle" />
 
 - 电影回忆
 
-<img src="./image/rate.png" width = "200" height = "400" alt="首页登录界面" align="middle" />
+<img src="./image/rate.png" width = "200" height = "400" alt="电影回忆" align="middle" />
 
 
 - 电影统计
 
-<img src="./image/total1.png" width = "200" height = "400" alt="首页登录界面" />
-<img src="./image/total2.png" width = "200" height = "400" alt="首页登录界面"  />
+<img src="./image/total1.png" width = "200" height = "400" alt="电影统计" />
+<img src="./image/total2.png" width = "200" height = "400" alt="电影统计"  />
 
 
 - 电影收藏
 
-<img src="./image/shoucang.png" width = "200" height = "400" alt="首页登录界面" align="middle" />
+<img src="./image/shoucang.png" width = "200" height = "400" alt="电影收藏" align="middle" />
 
 
 - 电影院展示
 
-<img src="./image/map.png" width = "200" height = "400" alt="首页登录界面" align="middle" />
+<img src="./image/map.png" width = "200" height = "400" alt="电影院展示" align="middle" />
 
 - 用户注册
 
-<img src="./image/register.png" width = "200" height = "400" alt="首页登录界面" align="middle" />
+<img src="./image/register.png" width = "200" height = "400" alt="用户注册" align="middle" />
 
 
 # 项目复现过程
